@@ -74,7 +74,7 @@ export function OnboardingCarousel({ onComplete }: OnboardingCarouselProps) {
       {/* Main Content */}
       <div className="flex-1 bg-firststore-dark rounded-t-2xl mx-4 mt-4 relative overflow-hidden">
         {/* Progress Indicators */}
-        <div className="flex space-x-2 pt-6 px-13">
+        <div className="flex space-x-2 pt-6 px-12">
           {onboardingData.map((_, index) => (
             <div
               key={index}
@@ -98,14 +98,14 @@ export function OnboardingCarousel({ onComplete }: OnboardingCarouselProps) {
         </button>
 
         {/* Title */}
-        <div className="px-13 mt-20">
-          <h1 className="text-white text-5xl font-bold leading-tight tracking-tight">
+        <div className="px-12 mt-20">
+          <h1 className="text-white text-4xl md:text-5xl font-bold leading-tight tracking-tight">
             {currentData.title}
           </h1>
         </div>
 
         {/* Image */}
-        <div className="px-13 mt-16">
+        <div className="px-12 mt-16">
           <img
             src={currentData.image}
             alt={currentData.title}
@@ -114,7 +114,7 @@ export function OnboardingCarousel({ onComplete }: OnboardingCarouselProps) {
         </div>
 
         {/* Next Button */}
-        <div className="px-13 mt-8 pb-6">
+        <div className="px-12 mt-8 pb-6">
           <button
             onClick={handleNext}
             className="w-full bg-firststore-teal text-firststore-dark font-bold text-base py-3.5 rounded-2xl tracking-tight"
