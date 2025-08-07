@@ -62,7 +62,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
 
       {/* Home Indicator */}
       <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2">
-        <div className="w-33 h-1.5 bg-white rounded-full"></div>
+        <div className="w-32 h-1.5 bg-white rounded-full"></div>
       </div>
     </div>
   );
