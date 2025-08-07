@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { SplashScreen } from '../components/SplashScreen';
 import { OnboardingCarousel } from '../components/OnboardingCarousel';
 import { MobileSignup } from '../components/MobileSignup';
+import { Dashboard } from '../components/Dashboard';
 
 type AppState = 'splash' | 'onboarding' | 'signup' | 'dashboard';
 
