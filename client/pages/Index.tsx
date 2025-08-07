@@ -1,61 +1,67 @@
-import { DemoResponse } from "@shared/api";
-import { useEffect, useState } from "react";
+import { useState } from 'react';
+import { SplashScreen } from '../components/SplashScreen';
+import { OnboardingCarousel } from '../components/OnboardingCarousel';
+import { MobileSignup } from '../components/MobileSignup';
+
+type AppState = 'splash' | 'onboarding' | 'signup' | 'dashboard';
 
 export default function Index() {
-  const [exampleFromServer, setExampleFromServer] = useState("");
-  // Fetch users on component mount
-  useEffect(() => {
-    fetchDemo();
-  }, []);
+  const [currentState, setCurrentState] = useState<AppState>('splash');
 
-  // Example of how to fetch data from the server (if needed)
-  const fetchDemo = async () => {
-    try {
-      const response = await fetch("/api/demo");
-      const data = (await response.json()) as DemoResponse;
-      setExampleFromServer(data.message);
-    } catch (error) {
-      console.error("Error fetching hello:", error);
-    }
+  const handleSplashComplete = () => {
+    setCurrentState('onboarding');
   };
 
+  const handleOnboardingComplete = () => {
+    setCurrentState('signup');
+  };
+
+  const handleSignupComplete = () => {
+    setCurrentState('dashboard');
+  };
+
+  const handleSignupBack = () => {
+    setCurrentState('onboarding');
+  };
+
+  if (currentState === 'splash') {
+    return <SplashScreen onComplete={handleSplashComplete} />;
+  }
+
+  if (currentState === 'onboarding') {
+    return <OnboardingCarousel onComplete={handleOnboardingComplete} />;
+  }
+
+  if (currentState === 'signup') {
+    return (
+      <MobileSignup
+        onComplete={handleSignupComplete}
+        onBack={handleSignupBack}
+      />
+    );
+  }
+
+  // Dashboard placeholder - this would be the main app
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
-      <div className="text-center">
-        {/* TODO: FUSION_GENERATION_APP_PLACEHOLDER replace everything here with the actual app! */}
-        <h1 className="text-2xl font-semibold text-slate-800 flex items-center justify-center gap-3">
-          <svg
-            className="animate-spin h-8 w-8 text-slate-400"
-            viewBox="0 0 50 50"
-          >
-            <circle
-              className="opacity-30"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-            />
-            <circle
-              className="text-slate-600"
-              cx="25"
-              cy="25"
-              r="20"
-              stroke="currentColor"
-              strokeWidth="5"
-              fill="none"
-              strokeDasharray="100"
-              strokeDashoffset="75"
-            />
+    <div className="min-h-screen bg-white flex flex-col items-center justify-center p-8">
+      <div className="text-center max-w-md">
+        <div className="w-16 h-16 bg-firststore-teal rounded-full flex items-center justify-center mx-auto mb-6">
+          <svg className="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
-          Generating your app...
+        </div>
+        <h1 className="text-2xl font-bold text-firststore-dark font-montserrat mb-4">
+          Welcome to FirstStore!
         </h1>
-        <p className="mt-4 text-slate-600 max-w-md">
-          Watch the chat on the left for updates that might need your attention
-          to finish generating
+        <p className="text-firststore-gray mb-8">
+          Your account has been successfully created. You can now start shopping for groceries.
         </p>
-        <p className="mt-4 hidden max-w-md">{exampleFromServer}</p>
+        <button
+          onClick={() => setCurrentState('splash')}
+          className="bg-firststore-teal text-white px-8 py-3 rounded-lg font-montserrat font-semibold"
+        >
+          Start Over (Demo)
+        </button>
       </div>
     </div>
   );
