@@ -23,6 +23,13 @@ export default {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
         },
+        firststore: {
+          teal: "#00BFA6",
+          dark: "#161616",
+          gray: "#444444",
+          lightgray: "#999999",
+          border: "#E0E0E0",
+        },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
           foreground: "hsl(var(--secondary-foreground))",
