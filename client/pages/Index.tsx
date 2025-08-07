@@ -25,19 +25,35 @@ export default function Index() {
   };
 
   if (currentState === 'splash') {
-    return <SplashScreen onComplete={handleSplashComplete} />;
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-gray-100 md:bg-gray-200">
+        <div className="w-full max-w-sm mx-auto bg-white md:rounded-3xl overflow-hidden md:shadow-2xl">
+          <SplashScreen onComplete={handleSplashComplete} />
+        </div>
+      </div>
+    );
   }
 
   if (currentState === 'onboarding') {
-    return <OnboardingCarousel onComplete={handleOnboardingComplete} />;
+    return (
+      <div className="flex justify-center items-center min-h-screen bg-gray-100 md:bg-gray-200">
+        <div className="w-full max-w-sm mx-auto bg-white md:rounded-3xl overflow-hidden md:shadow-2xl">
+          <OnboardingCarousel onComplete={handleOnboardingComplete} />
+        </div>
+      </div>
+    );
   }
 
   if (currentState === 'signup') {
     return (
-      <MobileSignup
-        onComplete={handleSignupComplete}
-        onBack={handleSignupBack}
-      />
+      <div className="flex justify-center items-center min-h-screen bg-gray-100 md:bg-gray-200">
+        <div className="w-full max-w-sm mx-auto bg-white md:rounded-3xl overflow-hidden md:shadow-2xl">
+          <MobileSignup
+            onComplete={handleSignupComplete}
+            onBack={handleSignupBack}
+          />
+        </div>
+      </div>
     );
   }
 
