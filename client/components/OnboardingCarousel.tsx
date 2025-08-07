@@ -126,7 +126,7 @@ export function OnboardingCarousel({ onComplete }: OnboardingCarouselProps) {
 
       {/* Home Indicator */}
       <div className="flex justify-center pb-5 pt-3">
-        <div className="w-33 h-1.5 bg-firststore-dark rounded-full"></div>
+        <div className="w-32 h-1.5 bg-firststore-dark rounded-full"></div>
       </div>
     </div>
   );
