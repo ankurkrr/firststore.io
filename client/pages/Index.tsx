@@ -11,20 +11,16 @@ export default function Index() {
   const [currentState, setCurrentState] = useState<AppState>("splash");
   const [error, setError] = useState<string | null>(null);
 
-  // Persist state in sessionStorage (temporarily disabled to show splash)
+  // Persist state in sessionStorage
   useEffect(() => {
     try {
-      // Clear any saved state to always start from splash
-      sessionStorage.removeItem("firststore-app-state");
-      setCurrentState("splash");
-
-      // const savedState = sessionStorage.getItem("firststore-app-state");
-      // if (
-      //   savedState &&
-      //   ["splash", "onboarding", "signup", "dashboard"].includes(savedState)
-      // ) {
-      //   setCurrentState(savedState as AppState);
-      // }
+      const savedState = sessionStorage.getItem("firststore-app-state");
+      if (
+        savedState &&
+        ["splash", "onboarding", "signup", "dashboard"].includes(savedState)
+      ) {
+        setCurrentState(savedState as AppState);
+      }
     } catch (error) {
       console.warn("Failed to load saved state:", error);
     }
