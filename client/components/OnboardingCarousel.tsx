@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 interface OnboardingCarouselProps {
   onComplete: () => void;
@@ -28,6 +28,7 @@ const onboardingData = [
 export function OnboardingCarousel({ onComplete }: OnboardingCarouselProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [imageError, setImageError] = useState<Record<number, boolean>>({});
 
   useEffect(() => {
     setProgress(0);
