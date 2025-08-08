@@ -90,51 +90,43 @@ export default function Index() {
 
   if (currentState === 'splash') {
     return (
-      <div className="flex justify-center items-center min-h-screen bg-gray-100 md:bg-gray-200">
-        <div className="w-full max-w-sm mx-auto bg-white md:rounded-3xl overflow-hidden md:shadow-2xl">
-          <ErrorBoundary>
-            <SplashScreen onComplete={handleSplashComplete} />
-          </ErrorBoundary>
-        </div>
+      <div className="min-h-screen bg-white">
+        <ErrorBoundary>
+          <SplashScreen onComplete={handleSplashComplete} />
+        </ErrorBoundary>
       </div>
     );
   }
 
   if (currentState === 'onboarding') {
     return (
-      <div className="flex justify-center items-center min-h-screen bg-gray-100 md:bg-gray-200">
-        <div className="w-full max-w-sm mx-auto bg-white md:rounded-3xl overflow-hidden md:shadow-2xl">
-          <ErrorBoundary>
-            <OnboardingCarousel onComplete={handleOnboardingComplete} />
-          </ErrorBoundary>
-        </div>
+      <div className="min-h-screen bg-white">
+        <ErrorBoundary>
+          <OnboardingCarousel onComplete={handleOnboardingComplete} />
+        </ErrorBoundary>
       </div>
     );
   }
 
   if (currentState === 'signup') {
     return (
-      <div className="flex justify-center items-center min-h-screen bg-gray-100 md:bg-gray-200">
-        <div className="w-full max-w-sm mx-auto bg-white md:rounded-3xl overflow-hidden md:shadow-2xl">
-          <ErrorBoundary>
-            <MobileSignup
-              onComplete={handleSignupComplete}
-              onBack={handleSignupBack}
-            />
-          </ErrorBoundary>
-        </div>
+      <div className="min-h-screen bg-white">
+        <ErrorBoundary>
+          <MobileSignup
+            onComplete={handleSignupComplete}
+            onBack={handleSignupBack}
+          />
+        </ErrorBoundary>
       </div>
     );
   }
 
   // Dashboard - Main app
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-100 md:bg-gray-200">
-      <div className="w-full max-w-sm mx-auto bg-white md:rounded-3xl overflow-hidden md:shadow-2xl">
-        <ErrorBoundary>
-          <Dashboard />
-        </ErrorBoundary>
-      </div>
+    <div className="min-h-screen bg-white">
+      <ErrorBoundary>
+        <Dashboard />
+      </ErrorBoundary>
     </div>
   );
 }
