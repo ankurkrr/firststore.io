@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 interface OnboardingCarouselProps {
   onComplete: () => void;
@@ -27,6 +27,7 @@ const onboardingData = [
 
 export function OnboardingCarousel({ onComplete }: OnboardingCarouselProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   const handleNext = () => {
     if (currentSlide < onboardingData.length - 1) {
