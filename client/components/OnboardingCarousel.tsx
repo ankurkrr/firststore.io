@@ -113,7 +113,7 @@ export function OnboardingCarousel({ onComplete }: OnboardingCarouselProps) {
   const currentData = onboardingData[safeCurrentSlide];
 
   return (
-    <div className="min-h-screen bg-firststore-dark flex flex-col">
+    <div className="w-full h-full bg-firststore-dark flex flex-col">
       {/* Main Content */}
       <div className="flex-1 relative overflow-hidden">
         {/* Progress Indicators */}
