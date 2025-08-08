@@ -16,35 +16,106 @@ export function MobileSignup({ onComplete, onBack }: MobileSignupProps) {
   const [email, setEmail] = useState('');
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const handlePhoneSubmit = () => {
-    if (phoneNumber && isAgreed) {
-      setStep('otp');
-    }
-  };
+  const validatePhone = useCallback((phone: string): boolean => {
+    const phoneRegex = /^[6-9]\d{9}$/;
+    return phoneRegex.test(phone.replace(/\s+/g, ''));
+  }, []);
 
-  const handleOtpSubmit = () => {
-    setStep('profile');
-  };
+  const validateEmail = useCallback((email: string): boolean => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  }, []);
 
-  const handleOtpChange = (index: number, value: string) => {
-    if (value.length <= 1) {
-      const newOtp = [...otp];
-      newOtp[index] = value;
-      setOtp(newOtp);
-      
-      // Auto-focus next input
-      if (value && index < 5) {
-        const nextInput = document.getElementById(`otp-${index + 1}`);
-        nextInput?.focus();
+  const handlePhoneSubmit = useCallback(() => {
+    try {
+      setErrors({});
+
+      if (!phoneNumber.trim()) {
+        setErrors({ phone: 'Phone number is required' });
+        return;
       }
-    }
-  };
 
-  const handleProfileSubmit = () => {
-    if (fullName && email) {
-      onComplete();
+      if (!validatePhone(phoneNumber)) {
+        setErrors({ phone: 'Please enter a valid 10-digit mobile number' });
+        return;
+      }
+
+      if (!isAgreed) {
+        setErrors({ agreement: 'Please agree to the terms and conditions' });
+        return;
+      }
+
+      setStep('otp');
+    } catch (error) {
+      console.error('Error in phone submit:', error);
+      setErrors({ general: 'Something went wrong. Please try again.' });
     }
-  };
+  }, [phoneNumber, isAgreed, validatePhone]);
+
+  const handleOtpSubmit = useCallback(() => {
+    try {
+      const otpString = otp.join('');
+      if (otpString.length !== 6) {
+        setErrors({ otp: 'Please enter complete OTP' });
+        return;
+      }
+
+      setErrors({});
+      setStep('profile');
+    } catch (error) {
+      console.error('Error in OTP submit:', error);
+      setErrors({ general: 'Something went wrong. Please try again.' });
+    }
+  }, [otp]);
+
+  const handleOtpChange = useCallback((index: number, value: string) => {
+    try {
+      if (value.length <= 1 && /^\d*$/.test(value)) {
+        const newOtp = [...otp];
+        newOtp[index] = value;
+        setOtp(newOtp);
+
+        // Clear errors when user starts typing
+        if (errors.otp) {
+          setErrors(prev => ({ ...prev, otp: '' }));
+        }
+
+        // Auto-focus next input
+        if (value && index < 5) {
+          const nextInput = document.getElementById(`otp-${index + 1}`);
+          nextInput?.focus();
+        }
+      }
+    } catch (error) {
+      console.error('Error in OTP change:', error);
+    }
+  }, [otp, errors.otp]);
+
+  const handleProfileSubmit = useCallback(() => {
+    try {
+      setErrors({});
+
+      if (!fullName.trim()) {
+        setErrors({ fullName: 'Full name is required' });
+        return;
+      }
+
+      if (!email.trim()) {
+        setErrors({ email: 'Email is required' });
+        return;
+      }
+
+      if (!validateEmail(email)) {
+        setErrors({ email: 'Please enter a valid email address' });
+        return;
+      }
+
+      onComplete();
+    } catch (error) {
+      console.error('Error in profile submit:', error);
+      setErrors({ general: 'Something went wrong. Please try again.' });
+    }
+  }, [fullName, email, onComplete, validateEmail]);
 
   if (step === 'input') {
     return (
