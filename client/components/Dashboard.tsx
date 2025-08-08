@@ -199,10 +199,6 @@ export function Dashboard() {
         </div>
       </div>
 
-      {/* Home Indicator */}
-      <div className="flex justify-center py-5">
-        <div className="w-32 h-1.5 bg-firststore-dark rounded-full"></div>
-      </div>
     </div>
   );
 }
