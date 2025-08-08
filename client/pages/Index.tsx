@@ -1,13 +1,35 @@
-import { useState } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { SplashScreen } from '../components/SplashScreen';
 import { OnboardingCarousel } from '../components/OnboardingCarousel';
 import { MobileSignup } from '../components/MobileSignup';
 import { Dashboard } from '../components/Dashboard';
+import ErrorBoundary from '../components/ErrorBoundary';
 
 type AppState = 'splash' | 'onboarding' | 'signup' | 'dashboard';
 
 export default function Index() {
   const [currentState, setCurrentState] = useState<AppState>('splash');
+  const [error, setError] = useState<string | null>(null);
+
+  // Persist state in sessionStorage
+  useEffect(() => {
+    try {
+      const savedState = sessionStorage.getItem('firststore-app-state');
+      if (savedState && ['splash', 'onboarding', 'signup', 'dashboard'].includes(savedState)) {
+        setCurrentState(savedState as AppState);
+      }
+    } catch (error) {
+      console.warn('Failed to load saved state:', error);
+    }
+  }, []);
+
+  useEffect(() => {
+    try {
+      sessionStorage.setItem('firststore-app-state', currentState);
+    } catch (error) {
+      console.warn('Failed to save state:', error);
+    }
+  }, [currentState]);
 
   const handleSplashComplete = () => {
     setCurrentState('onboarding');
