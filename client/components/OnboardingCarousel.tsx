@@ -58,7 +58,9 @@ export function OnboardingCarousel({ onComplete }: OnboardingCarouselProps) {
 
   useEffect(() => {
     if (progress >= 100) {
-      const timeout = setTimeout(() => {
+      let timeout: NodeJS.Timeout;
+
+      timeout = setTimeout(() => {
         try {
           if (currentSlide < onboardingData.length - 1) {
             setCurrentSlide(currentSlide + 1);
@@ -70,7 +72,11 @@ export function OnboardingCarousel({ onComplete }: OnboardingCarouselProps) {
         }
       }, 200);
 
-      return () => clearTimeout(timeout);
+      return () => {
+        if (timeout) {
+          clearTimeout(timeout);
+        }
+      };
     }
   }, [progress, currentSlide, onComplete]);
 
