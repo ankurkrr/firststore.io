@@ -136,7 +136,7 @@ export function OnboardingCarousel({ onComplete }: OnboardingCarouselProps) {
         {/* Title */}
         <div className="px-12 mt-20">
           <h1 className="text-white text-4xl md:text-5xl font-bold leading-tight tracking-tight transition-all duration-700 ease-in-out transform">
-            {currentData.title}
+            {currentData?.title || 'Welcome to FirstStore'}
           </h1>
         </div>
 
