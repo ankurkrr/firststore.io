@@ -15,13 +15,27 @@ export default defineConfig(({ mode }) => ({
   },
   build: {
     outDir: "dist/spa",
+    sourcemap: mode === "development",
+    minify: mode === "production",
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ["react", "react-dom"],
+          router: ["react-router-dom"],
+          ui: ["@radix-ui/react-toast", "@radix-ui/react-tooltip", "lucide-react"],
+        },
+      },
+    },
   },
-  plugins: [react(), expressPlugin()],
+  plugins: mode === "development" ? [react(), expressPlugin()] : [react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./client"),
       "@shared": path.resolve(__dirname, "./shared"),
     },
+  },
+  define: {
+    __DEV__: mode === "development",
   },
 }));
 
