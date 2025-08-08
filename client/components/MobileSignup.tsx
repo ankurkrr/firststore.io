@@ -122,7 +122,7 @@ export function MobileSignup({ onComplete, onBack }: MobileSignupProps) {
 
   if (step === "input") {
     return (
-      <div className="min-h-screen bg-white flex flex-col">
+      <div className="w-full min-h-full bg-white flex flex-col">
         {/* Back Button */}
         <div className="px-4 py-3 pt-8">
           <button
