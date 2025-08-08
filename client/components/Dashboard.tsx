@@ -39,7 +39,7 @@ export function Dashboard() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="w-full min-h-full bg-white">
       {/* Header */}
       <div className="bg-white shadow-sm px-4 py-4">
         <div className="flex items-center justify-between">
