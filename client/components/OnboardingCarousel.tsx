@@ -104,14 +104,14 @@ export function OnboardingCarousel({ onComplete }: OnboardingCarouselProps) {
             <div
               key={index}
               className={`h-1.5 rounded-full transition-all duration-700 ease-out ${
-                index === currentSlide
+                index === safeCurrentSlide
                   ? 'w-32 bg-gray-600 relative overflow-hidden'
-                  : index < currentSlide
+                  : index < safeCurrentSlide
                   ? 'w-6 bg-firststore-teal'
                   : 'w-6 bg-gray-600'
               }`}
             >
-              {index === currentSlide && (
+              {index === safeCurrentSlide && (
                 <div
                   className="absolute top-0 left-0 h-full bg-firststore-teal transition-all duration-75 ease-linear transform origin-left"
                   style={{
