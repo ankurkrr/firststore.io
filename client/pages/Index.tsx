@@ -92,7 +92,9 @@ export default function Index() {
     return (
       <div className="flex justify-center items-center min-h-screen bg-gray-100 md:bg-gray-200">
         <div className="w-full max-w-sm mx-auto bg-white md:rounded-3xl overflow-hidden md:shadow-2xl">
-          <SplashScreen onComplete={handleSplashComplete} />
+          <ErrorBoundary>
+            <SplashScreen onComplete={handleSplashComplete} />
+          </ErrorBoundary>
         </div>
       </div>
     );
@@ -102,7 +104,9 @@ export default function Index() {
     return (
       <div className="flex justify-center items-center min-h-screen bg-gray-100 md:bg-gray-200">
         <div className="w-full max-w-sm mx-auto bg-white md:rounded-3xl overflow-hidden md:shadow-2xl">
-          <OnboardingCarousel onComplete={handleOnboardingComplete} />
+          <ErrorBoundary>
+            <OnboardingCarousel onComplete={handleOnboardingComplete} />
+          </ErrorBoundary>
         </div>
       </div>
     );
@@ -112,10 +116,12 @@ export default function Index() {
     return (
       <div className="flex justify-center items-center min-h-screen bg-gray-100 md:bg-gray-200">
         <div className="w-full max-w-sm mx-auto bg-white md:rounded-3xl overflow-hidden md:shadow-2xl">
-          <MobileSignup
-            onComplete={handleSignupComplete}
-            onBack={handleSignupBack}
-          />
+          <ErrorBoundary>
+            <MobileSignup
+              onComplete={handleSignupComplete}
+              onBack={handleSignupBack}
+            />
+          </ErrorBoundary>
         </div>
       </div>
     );
@@ -125,7 +131,9 @@ export default function Index() {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 md:bg-gray-200">
       <div className="w-full max-w-sm mx-auto bg-white md:rounded-3xl overflow-hidden md:shadow-2xl">
-        <Dashboard />
+        <ErrorBoundary>
+          <Dashboard />
+        </ErrorBoundary>
       </div>
     </div>
   );
