@@ -50,10 +50,14 @@ export function OnboardingCarousel({ onComplete }: OnboardingCarouselProps) {
   useEffect(() => {
     if (progress >= 100) {
       const timeout = setTimeout(() => {
-        if (currentSlide < onboardingData.length - 1) {
-          setCurrentSlide(currentSlide + 1);
-        } else {
-          onComplete();
+        try {
+          if (currentSlide < onboardingData.length - 1) {
+            setCurrentSlide(currentSlide + 1);
+          } else {
+            onComplete();
+          }
+        } catch (error) {
+          console.error('Error in auto-progression:', error);
         }
       }, 200);
 
@@ -61,20 +65,34 @@ export function OnboardingCarousel({ onComplete }: OnboardingCarouselProps) {
     }
   }, [progress, currentSlide, onComplete]);
 
-  const handleNext = () => {
-    if (currentSlide < onboardingData.length - 1) {
-      setCurrentSlide(currentSlide + 1);
-      setProgress(0);
-    } else {
-      onComplete();
+  const handleNext = useCallback(() => {
+    try {
+      if (currentSlide < onboardingData.length - 1) {
+        setCurrentSlide(currentSlide + 1);
+        setProgress(0);
+      } else {
+        onComplete();
+      }
+    } catch (error) {
+      console.error('Error in handleNext:', error);
     }
-  };
+  }, [currentSlide, onComplete]);
 
-  const handleSkip = () => {
-    onComplete();
-  };
+  const handleSkip = useCallback(() => {
+    try {
+      onComplete();
+    } catch (error) {
+      console.error('Error in handleSkip:', error);
+    }
+  }, [onComplete]);
 
-  const currentData = onboardingData[currentSlide];
+  const handleImageError = useCallback((slideIndex: number) => {
+    setImageError(prev => ({ ...prev, [slideIndex]: true }));
+  }, []);
+
+  // Ensure currentSlide is within bounds
+  const safeCurrentSlide = Math.min(Math.max(currentSlide, 0), onboardingData.length - 1);
+  const currentData = onboardingData[safeCurrentSlide];
 
   return (
     <div className="min-h-screen bg-firststore-dark flex flex-col">
