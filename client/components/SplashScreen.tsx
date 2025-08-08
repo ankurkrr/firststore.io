@@ -20,7 +20,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
 
   return (
     <div
-      className={`fixed inset-0 bg-firststore-dark flex flex-col items-center justify-center transition-opacity duration-300 z-50 ${
+      className={`min-h-screen bg-firststore-dark flex flex-col items-center justify-center transition-opacity duration-300 ${
         showSplash ? "opacity-100" : "opacity-0"
       }`}
     >
