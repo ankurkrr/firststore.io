@@ -93,8 +93,8 @@ export default function Index() {
 
   if (currentState === "splash") {
     return (
-      <div className="min-h-screen bg-white">
-        <ErrorBoundary>
+      <div key="splash" className="min-h-screen bg-white">
+        <ErrorBoundary key="splash-error-boundary">
           <SplashScreen onComplete={handleSplashComplete} />
         </ErrorBoundary>
       </div>
@@ -103,8 +103,8 @@ export default function Index() {
 
   if (currentState === "onboarding") {
     return (
-      <div className="min-h-screen bg-white">
-        <ErrorBoundary>
+      <div key="onboarding" className="min-h-screen bg-white">
+        <ErrorBoundary key="onboarding-error-boundary">
           <OnboardingCarousel onComplete={handleOnboardingComplete} />
         </ErrorBoundary>
       </div>
@@ -113,8 +113,8 @@ export default function Index() {
 
   if (currentState === "signup") {
     return (
-      <div className="min-h-screen bg-white">
-        <ErrorBoundary>
+      <div key="signup" className="min-h-screen bg-white">
+        <ErrorBoundary key="signup-error-boundary">
           <MobileSignup
             onComplete={handleSignupComplete}
             onBack={handleSignupBack}
@@ -126,8 +126,8 @@ export default function Index() {
 
   // Dashboard - Main app
   return (
-    <div className="min-h-screen bg-white">
-      <ErrorBoundary>
+    <div key="dashboard" className="min-h-screen bg-white">
+      <ErrorBoundary key="dashboard-error-boundary">
         <Dashboard />
       </ErrorBoundary>
     </div>
