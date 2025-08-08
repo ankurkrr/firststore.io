@@ -203,6 +203,12 @@ export function MobileSignup({ onComplete, onBack }: MobileSignupProps) {
               <span className="text-firststore-teal">Privacy Policy</span>
             </label>
           </div>
+          {errors.agreement && (
+            <p className="text-red-500 text-xs mb-4">{errors.agreement}</p>
+          )}
+          {errors.general && (
+            <p className="text-red-500 text-xs mb-4">{errors.general}</p>
+          )}
 
           <button
             onClick={handlePhoneSubmit}
