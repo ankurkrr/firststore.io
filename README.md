@@ -1,30 +1,28 @@
-# FirstStore - React Native Expo App
+# FirstStore - Web Application
 
-A mobile grocery delivery app built with React Native and Expo, featuring a complete onboarding flow, authentication, and shopping interface.
+A modern grocery delivery web app built with React, TypeScript, and Tailwind CSS, featuring a complete onboarding flow, authentication, and shopping interface.
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 - Node.js (v16 or later)
-- Expo CLI: `npm install -g @expo/cli`
-- Expo Go app on your mobile device
+- npm or yarn
 
 ### Installation
 
-1. **Download and extract** the project files
-2. **Install dependencies:**
+1. **Install dependencies:**
    ```bash
    npm install
    ```
 
-3. **Start the development server:**
+2. **Start the development server:**
    ```bash
-   npx expo start
+   npm run dev
    ```
 
-4. **Test on your mobile device:**
-   - Scan the QR code with Expo Go app (Android) or Camera app (iOS)
-   - Or press `a` for Android emulator, `i` for iOS simulator
+3. **Open in browser:**
+   - Navigate to `http://localhost:8080`
+   - The app is responsive and works on mobile, tablet, and desktop
 
 ## 📱 Features
 
@@ -35,12 +33,12 @@ A mobile grocery delivery app built with React Native and Expo, featuring a comp
 - **Dashboard** with product browsing and categories
 
 ### **UI Components:**
-- Custom status bar matching design
+- Custom status bar matching mobile design
 - Product cards with add-to-cart functionality
 - Category filters
 - Hero banner with carousel indicators
 - Trending products section
-- Responsive design for all screen sizes
+- Fully responsive design
 
 ## 🎨 Design System
 
@@ -58,82 +56,71 @@ A mobile grocery delivery app built with React Native and Expo, featuring a comp
 
 ### **Project Structure:**
 ```
-├── App.tsx                 # Main app entry point
-├── components/             # React Native components
-│   ├── SplashScreen.tsx   # Splash screen with logo
-│   ├── OnboardingCarousel.tsx
-│   ├── MobileSignup.tsx   # Auth flow (3 steps)
-│   └── Dashboard.tsx      # Main shopping interface
-├── constants/
-│   └── Colors.ts          # Design system colors
-└── assets/                # Images and icons
+├── client/                 # React web application
+│   ├── components/         # React components
+│   │   ├── SplashScreen.tsx
+│   │   ├── OnboardingCarousel.tsx
+│   │   ├── MobileSignup.tsx
+│   │   ├── Dashboard.tsx
+│   │   └── ui/            # Shadcn UI components
+│   ├── pages/             # Route components
+│   └── global.css         # Styling with FirstStore theme
+├── server/                # Express backend
+└── shared/                # Shared TypeScript interfaces
 ```
 
-### **Key Features:**
-- **Native Performance**: Built with React Native for smooth animations
-- **Expo Compatibility**: Easy testing with Expo Go
-- **TypeScript**: Full type safety
-- **Vector Icons**: Using @expo/vector-icons
-- **Cross Platform**: Works on iOS and Android
+### **Tech Stack:**
+- **Frontend**: React 18 + TypeScript + Tailwind CSS
+- **Build Tool**: Vite
+- **Backend**: Express.js
+- **UI Components**: Radix UI + Custom components
+- **Icons**: Lucide React
 
-## 📦 Dependencies
-
-### **Core:**
-- `expo` - Development platform
-- `react-native` - Mobile framework
-- `@react-navigation/native` - Navigation
-- `react-native-gesture-handler` - Touch gestures
-
-### **UI & Icons:**
-- `@expo/vector-icons` - Icon library
-- `react-native-svg` - SVG support
-- `expo-linear-gradient` - Gradient effects
-
-## 🔧 Scripts
+## 📦 Scripts
 
 ```bash
 # Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Start production server
 npm start
 
-# Run on Android device/emulator
-npm run android
+# Run tests
+npm test
 
-# Run on iOS device/simulator
-npm run ios
-
-# Run in web browser (for debugging)
-npm run web
+# Type checking
+npm run typecheck
 ```
 
-## 📝 Usage
+## 🚀 Deployment
 
-1. **Testing Flow:**
-   - App starts with splash screen (2 seconds)
-   - Proceed through onboarding (3 screens)
-   - Complete signup process (phone → OTP → profile)
-   - Browse products in dashboard
+### **Vercel (Recommended):**
+1. Push code to GitHub
+2. Connect repository to Vercel
+3. Deploy automatically
 
-2. **Features to Test:**
-   - Smooth animations between screens
-   - Product filtering by categories
-   - Add to cart functionality
-   - Horizontal scrolling in trending section
-   - Responsive layout on different screen sizes
+### **Other Platforms:**
+- Netlify
+- AWS Amplify
+- Any static hosting provider
 
 ## 🎯 Design Fidelity
 
-This React Native version maintains **100% pixel-perfect** fidelity to the original Figma design:
+This web application maintains **100% pixel-perfect** fidelity to the original Figma design:
 - Exact colors, spacing, and typography
 - Matching animations and transitions
-- Authentic mobile status bar
-- Native scrolling and gestures
+- Authentic mobile-like experience on web
+- Responsive design for all screen sizes
 
 ## 🤝 Contributing
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Test on both iOS and Android
+4. Test responsiveness on all screen sizes
 5. Submit a pull request
 
 ## 📄 License
