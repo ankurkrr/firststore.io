@@ -170,11 +170,23 @@ export function MobileSignup({ onComplete, onBack }: MobileSignupProps) {
               <input
                 type="tel"
                 value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
+                onChange={(e) => {
+                  setPhoneNumber(e.target.value);
+                  if (errors.phone) {
+                    setErrors(prev => ({ ...prev, phone: '' }));
+                  }
+                }}
                 placeholder="Enter your mobile number"
-                className="flex-1 border border-l-0 border-firststore-border rounded-r-lg px-4 py-4 text-sm font-montserrat focus:outline-none focus:border-firststore-teal/50"
+                className={`flex-1 border border-l-0 rounded-r-lg px-4 py-4 text-sm font-montserrat focus:outline-none ${
+                  errors.phone
+                    ? 'border-red-500 focus:border-red-500'
+                    : 'border-firststore-border focus:border-firststore-teal/50'
+                }`}
               />
             </div>
+            {errors.phone && (
+              <p className="text-red-500 text-xs mt-1">{errors.phone}</p>
+            )}
           </div>
 
           <div className="flex items-start space-x-3 mb-8">
