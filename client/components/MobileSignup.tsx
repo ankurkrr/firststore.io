@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { ChevronLeft } from 'lucide-react';
 
 interface MobileSignupProps {
@@ -14,6 +14,7 @@ export function MobileSignup({ onComplete, onBack }: MobileSignupProps) {
   const [countdown, setCountdown] = useState(30);
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const handlePhoneSubmit = () => {
     if (phoneNumber && isAgreed) {
