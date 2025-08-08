@@ -36,9 +36,5 @@
     "shared/**/*.tsx",
     "shared/**/*.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "server"
-  ]
+  "exclude": ["node_modules", "dist", "server"]
 }

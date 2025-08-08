@@ -14,7 +14,7 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       retry: 3,
-      retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000),
+      retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
     },
   },
 });
@@ -39,7 +39,9 @@ const App = () => (
 
 const rootElement = document.getElementById("root");
 if (!rootElement) {
-  throw new Error("Root element not found. Make sure you have a div with id='root' in your HTML.");
+  throw new Error(
+    "Root element not found. Make sure you have a div with id='root' in your HTML.",
+  );
 }
 
 createRoot(rootElement).render(<App />);
