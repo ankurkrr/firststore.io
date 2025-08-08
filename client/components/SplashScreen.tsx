@@ -11,7 +11,7 @@ export function SplashScreen({ onComplete }: SplashScreenProps) {
     const timer = setTimeout(() => {
       setShowSplash(false);
       setTimeout(onComplete, 300); // Wait for fade out
-    }, 10000); // Extended to 10 seconds to see splash screen
+    }, 2000);
 
     return () => {
       clearTimeout(timer);
