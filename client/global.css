@@ -102,9 +102,43 @@
     @apply border-border;
   }
 
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
   body {
     @apply bg-background text-foreground;
     font-family: 'Inter', -apple-system, Roboto, Helvetica, sans-serif;
+    /* Remove mobile browser chrome */
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  #root {
+    width: 100vw;
+    min-height: 100vh;
+    min-height: 100dvh; /* Dynamic viewport height for mobile */
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Hide mobile browser elements and ensure full screen */
+  @media screen and (max-width: 768px) {
+    html {
+      /* Full viewport without browser chrome */
+      height: -webkit-fill-available;
+    }
+
+    body {
+      /* Ensure full height on mobile */
+      min-height: -webkit-fill-available;
+    }
   }
 
   .font-montserrat {
