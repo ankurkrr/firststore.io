@@ -1,4 +1,5 @@
 # FirstStore - Web Application
+https://firststore-io.vercel.app/
 
 A modern grocery delivery web app built with React, TypeScript, and Tailwind CSS, featuring a complete onboarding flow, authentication, and shopping interface.
 
