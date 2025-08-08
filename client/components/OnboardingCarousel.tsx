@@ -29,9 +29,29 @@ export function OnboardingCarousel({ onComplete }: OnboardingCarouselProps) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [progress, setProgress] = useState(0);
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setProgress(prev => {
+        if (prev >= 100) {
+          if (currentSlide < onboardingData.length - 1) {
+            setCurrentSlide(currentSlide + 1);
+            return 0;
+          } else {
+            onComplete();
+            return prev;
+          }
+        }
+        return prev + 2;
+      });
+    }, 100);
+
+    return () => clearInterval(timer);
+  }, [currentSlide, onComplete]);
+
   const handleNext = () => {
     if (currentSlide < onboardingData.length - 1) {
       setCurrentSlide(currentSlide + 1);
+      setProgress(0);
     } else {
       onComplete();
     }
