@@ -40,27 +40,6 @@ export function Dashboard() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Status Bar */}
-      <div className="flex items-center justify-between px-8 pt-3 h-11">
-        <div className="bg-firststore-dark rounded-full px-3 py-1 flex items-center">
-          <span className="text-white text-sm font-normal tracking-tight">9:41</span>
-        </div>
-        <div className="flex items-center space-x-1">
-          <div className="flex space-x-1">
-            <div className="w-1 h-3 bg-firststore-dark rounded-sm"></div>
-            <div className="w-1 h-4 bg-firststore-dark rounded-sm"></div>
-            <div className="w-1 h-2 bg-firststore-dark rounded-sm"></div>
-            <div className="w-1 h-1 bg-firststore-dark rounded-sm"></div>
-          </div>
-          <svg className="w-4 h-3 text-firststore-dark" fill="currentColor" viewBox="0 0 20 16">
-            <path d="M10 12.5C10.8284 12.5 11.5 11.8284 11.5 11C11.5 10.1716 10.8284 9.5 10 9.5C9.17157 9.5 8.5 10.1716 8.5 11C8.5 11.8284 9.17157 12.5 10 12.5Z"/>
-          </svg>
-          <div className="w-6 h-3 border border-firststore-dark/35 rounded-sm flex items-center">
-            <div className="w-4 h-2 bg-firststore-dark rounded-xs mx-0.5"></div>
-          </div>
-        </div>
-      </div>
-
       {/* Header */}
       <div className="bg-white shadow-sm px-4 py-4">
         <div className="flex items-center justify-between">
