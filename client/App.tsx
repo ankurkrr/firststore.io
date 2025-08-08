@@ -45,7 +45,7 @@ if (!rootElement) {
 }
 
 // Prevent double mounting in development mode
-if (!rootElement.hasAttribute('data-react-root')) {
-  rootElement.setAttribute('data-react-root', 'true');
+if (!rootElement.hasAttribute("data-react-root")) {
+  rootElement.setAttribute("data-react-root", "true");
   createRoot(rootElement).render(<App />);
 }
