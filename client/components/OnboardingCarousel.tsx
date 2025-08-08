@@ -84,18 +84,22 @@ export function OnboardingCarousel({ onComplete }: OnboardingCarouselProps) {
           {onboardingData.map((_, index) => (
             <div
               key={index}
-              className={`h-1 rounded-full transition-all duration-500 ease-in-out ${
+              className={`h-1.5 rounded-full transition-all duration-700 ease-out ${
                 index === currentSlide
-                  ? 'w-32 bg-firststore-teal relative overflow-hidden'
+                  ? 'w-32 bg-gray-600 relative overflow-hidden'
                   : index < currentSlide
                   ? 'w-6 bg-firststore-teal'
-                  : 'w-6 bg-firststore-gray'
+                  : 'w-6 bg-gray-600'
               }`}
             >
               {index === currentSlide && (
                 <div
-                  className="absolute top-0 left-0 h-full bg-firststore-teal/60 transition-all duration-100 ease-linear"
-                  style={{ width: `${progress}%` }}
+                  className="absolute top-0 left-0 h-full bg-firststore-teal transition-all duration-75 ease-linear transform origin-left"
+                  style={{
+                    width: `${progress}%`,
+                    transform: `scaleX(${progress / 100})`,
+                    transformOrigin: 'left center'
+                  }}
                 />
               )}
             </div>
