@@ -38,7 +38,9 @@ export function OnboardingCarousel({ onComplete }: OnboardingCarouselProps) {
   }, [currentSlide]);
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    let timer: NodeJS.Timeout;
+
+    timer = setInterval(() => {
       setProgress((prev) => {
         if (prev >= 100) {
           return 100;
@@ -47,7 +49,11 @@ export function OnboardingCarousel({ onComplete }: OnboardingCarouselProps) {
       });
     }, 100);
 
-    return () => clearInterval(timer);
+    return () => {
+      if (timer) {
+        clearInterval(timer);
+      }
+    };
   }, [currentSlide]);
 
   useEffect(() => {
