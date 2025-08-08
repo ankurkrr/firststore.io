@@ -167,7 +167,7 @@ export function OnboardingCarousel({ onComplete }: OnboardingCarouselProps) {
             onClick={handleNext}
             className="w-full bg-firststore-teal text-firststore-dark font-bold text-base py-3.5 rounded-2xl tracking-tight transition-all duration-300 ease-in-out hover:bg-firststore-teal/90 hover:shadow-lg transform hover:scale-[1.02] active:scale-[0.98]"
           >
-            {currentData.buttonText}
+            {currentData?.buttonText || 'Next'}
           </button>
         </div>
       </div>
