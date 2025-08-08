@@ -1,41 +1,52 @@
-import { useState } from 'react';
-import { Search, Bell, ChevronDown, Plus } from 'lucide-react';
+import { useState } from "react";
+import { Search, Bell, ChevronDown, Plus } from "lucide-react";
 
 export function Dashboard() {
-  const [activeCategory, setActiveCategory] = useState('All');
+  const [activeCategory, setActiveCategory] = useState("All");
 
-  const categories = ['All', 'Electronics', 'Beauty', 'Kids', 'Decor', 'Fitness'];
+  const categories = [
+    "All",
+    "Electronics",
+    "Beauty",
+    "Kids",
+    "Decor",
+    "Fitness",
+  ];
 
   const products = [
     {
       id: 1,
-      name: 'Fortune Basmati Rice (5kg)',
-      description: 'Premium long grain',
+      name: "Fortune Basmati Rice (5kg)",
+      description: "Premium long grain",
       price: 399,
       originalPrice: 460,
-      image: 'https://api.builder.io/api/v1/image/assets/TEMP/b4af529d3863ed489a9f50c12382756a4b6d49f6?width=272'
+      image:
+        "https://api.builder.io/api/v1/image/assets/TEMP/b4af529d3863ed489a9f50c12382756a4b6d49f6?width=272",
     },
     {
       id: 2,
-      name: 'Amul Gold Milk',
-      description: 'Full Cream | 1L',
+      name: "Amul Gold Milk",
+      description: "Full Cream | 1L",
       price: 64,
-      image: 'https://api.builder.io/api/v1/image/assets/TEMP/41878e45041b87b25a1a43faf7e04a07c2121540?width=272'
+      image:
+        "https://api.builder.io/api/v1/image/assets/TEMP/41878e45041b87b25a1a43faf7e04a07c2121540?width=272",
     },
     {
       id: 3,
-      name: 'Lay\'s Magic Masala',
-      description: 'Spicy, crispy snack | 52g',
+      name: "Lay's Magic Masala",
+      description: "Spicy, crispy snack | 52g",
       price: 20,
-      image: 'https://api.builder.io/api/v1/image/assets/TEMP/155e8f52f2c8f26155a128c53f8474f3a1b241ca?width=272'
+      image:
+        "https://api.builder.io/api/v1/image/assets/TEMP/155e8f52f2c8f26155a128c53f8474f3a1b241ca?width=272",
     },
     {
       id: 4,
-      name: 'Fresh Tomatoes',
-      description: '500g | Locally sourced',
+      name: "Fresh Tomatoes",
+      description: "500g | Locally sourced",
       price: 19,
-      image: 'https://api.builder.io/api/v1/image/assets/TEMP/d4a52c7d0ce3cc503cbc795b49056402471bb103?width=360'
-    }
+      image:
+        "https://api.builder.io/api/v1/image/assets/TEMP/d4a52c7d0ce3cc503cbc795b49056402471bb103?width=360",
+    },
   ];
 
   return (
@@ -48,7 +59,9 @@ export function Dashboard() {
             <div>
               <p className="text-xs text-gray-600">Delivering to</p>
               <div className="flex items-center space-x-1">
-                <h2 className="text-base font-bold text-gray-800">Shiv Vihar, Palwal</h2>
+                <h2 className="text-base font-bold text-gray-800">
+                  Shiv Vihar, Palwal
+                </h2>
                 <ChevronDown className="w-4 h-4 text-gray-600" />
               </div>
             </div>
@@ -89,8 +102,10 @@ export function Dashboard() {
 
       {/* What Do You Need Today Section */}
       <div className="px-4 mb-6">
-        <h2 className="text-base font-bold text-firststore-dark mb-4">What Do You Need Today?</h2>
-        
+        <h2 className="text-base font-bold text-firststore-dark mb-4">
+          What Do You Need Today?
+        </h2>
+
         {/* Category Filters */}
         <div className="flex space-x-2 mb-6 overflow-x-auto">
           {categories.map((category) => (
@@ -99,8 +114,8 @@ export function Dashboard() {
               onClick={() => setActiveCategory(category)}
               className={`px-4 py-2 rounded-lg text-xs font-medium whitespace-nowrap border ${
                 activeCategory === category
-                  ? 'bg-white border-firststore-teal text-firststore-teal'
-                  : 'bg-white border-gray-400 text-gray-600'
+                  ? "bg-white border-firststore-teal text-firststore-teal"
+                  : "bg-white border-gray-400 text-gray-600"
               }`}
             >
               {category}
@@ -111,7 +126,10 @@ export function Dashboard() {
         {/* Product Grid */}
         <div className="grid grid-cols-2 gap-4">
           {products.map((product) => (
-            <div key={product.id} className="bg-white rounded-lg shadow-sm border border-gray-100">
+            <div
+              key={product.id}
+              className="bg-white rounded-lg shadow-sm border border-gray-100"
+            >
               {/* Product Image */}
               <div className="bg-gray-50 rounded-t-lg p-1 relative">
                 <img
@@ -120,21 +138,27 @@ export function Dashboard() {
                   className="w-full h-40 object-contain rounded-lg"
                 />
               </div>
-              
+
               {/* Product Info */}
               <div className="p-2">
                 <h3 className="text-sm font-bold text-gray-800 mb-1 leading-tight">
                   {product.name}
                 </h3>
-                <p className="text-xs text-gray-600 mb-2">{product.description}</p>
-                
+                <p className="text-xs text-gray-600 mb-2">
+                  {product.description}
+                </p>
+
                 {/* Price and Add Button */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-1">
-                    <span className="text-sm font-bold text-gray-800">₹{product.price}</span>
+                    <span className="text-sm font-bold text-gray-800">
+                      ₹{product.price}
+                    </span>
                     {product.originalPrice && (
                       <div className="relative">
-                        <span className="text-xs text-gray-500">₹{product.originalPrice}</span>
+                        <span className="text-xs text-gray-500">
+                          ₹{product.originalPrice}
+                        </span>
                         <div className="absolute inset-x-0 top-1.5 h-px bg-firststore-teal"></div>
                       </div>
                     )}
@@ -161,7 +185,10 @@ export function Dashboard() {
         {/* Horizontal Scrolling Product List */}
         <div className="flex space-x-4 overflow-x-auto pb-4">
           {products.map((product) => (
-            <div key={`trending-${product.id}`} className="bg-white rounded-lg shadow-sm min-w-[196px] flex-shrink-0">
+            <div
+              key={`trending-${product.id}`}
+              className="bg-white rounded-lg shadow-sm min-w-[196px] flex-shrink-0"
+            >
               {/* Product Image */}
               <div className="bg-gray-50 rounded-t-lg p-1">
                 <img
@@ -170,21 +197,27 @@ export function Dashboard() {
                   className="w-full h-40 object-contain rounded-lg"
                 />
               </div>
-              
+
               {/* Product Info */}
               <div className="p-2">
                 <h3 className="text-sm font-bold text-gray-800 mb-1 leading-tight">
                   {product.name}
                 </h3>
-                <p className="text-xs text-gray-600 mb-2">{product.description}</p>
-                
+                <p className="text-xs text-gray-600 mb-2">
+                  {product.description}
+                </p>
+
                 {/* Price and Add Button */}
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-1">
-                    <span className="text-sm font-bold text-gray-800">₹{product.price}</span>
+                    <span className="text-sm font-bold text-gray-800">
+                      ₹{product.price}
+                    </span>
                     {product.originalPrice && (
                       <div className="relative">
-                        <span className="text-xs text-gray-500">₹{product.originalPrice}</span>
+                        <span className="text-xs text-gray-500">
+                          ₹{product.originalPrice}
+                        </span>
                         <div className="absolute inset-x-0 top-1.5 h-px bg-firststore-teal"></div>
                       </div>
                     )}
@@ -198,7 +231,6 @@ export function Dashboard() {
           ))}
         </div>
       </div>
-
     </div>
   );
 }

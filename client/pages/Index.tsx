@@ -103,7 +103,10 @@ export default function Index() {
 
   if (currentState === "onboarding") {
     return (
-      <div key="onboarding" className="w-full h-screen bg-white overflow-hidden">
+      <div
+        key="onboarding"
+        className="w-full h-screen bg-white overflow-hidden"
+      >
         <ErrorBoundary key="onboarding-error-boundary">
           <OnboardingCarousel onComplete={handleOnboardingComplete} />
         </ErrorBoundary>
